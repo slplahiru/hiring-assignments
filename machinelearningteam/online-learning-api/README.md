@@ -1,6 +1,10 @@
 # Assignment used for Data Engineering Position
 
-In this assignment you will build a simple online learning API that is also able to report the health of the API.
+In this assignment you will build a simple online learning API - and then sketch out how you would turn this into a production system.
+
+The assignment has a coding part (1,2,2a) and a design part (3). Coding and Design assignments have about the same weight in our evaluation.
+
+**Instructions for the coding assignment:**
 
 You may use any technology you find convenient to work on this. 
 
@@ -19,9 +23,9 @@ Included in this assignment is a dataset of examples of the kinds of transaction
 
 Build a server that continuously trains a machine learning model. 
 
-You can use the model contained in `model/model.py`. The quality of the model is not important to the test. 
+You can use the model contained in `model/model.py`. The quality of the model is not important to the test - you don't need to change it.
 
-Use any micro web framework you like to build the server - for Python Flask is an easy option.
+Use any micro web framework you like to build the server - for Python `Flask` is an easy option.
 
 The server has a JSON API with the following endpoints.
 
@@ -45,22 +49,30 @@ Accepts POST requests
 
 Prepare a client to call the API. Start streaming in data from the dataset. 
 
-##  Part 3 - Monitoring
+### [OPTIONAL]  Part 2a - Monitoring
 
-In this part you will add the ability to report the learning progress of the system. 
+Add an endpoint that reports model quality. 
 
-You will add the following endpoint
-
-### `/metrics/<n>`
-Accepts GET requests
-
-* Compare the submitted and predicted `AccountNumber`from the last `n` samples submitted.
-* Report the precision and recall. In python you can use the `precision_score` and `recall_score` functions from 
+* Report the precision and recall of the last 1000 samples. In python you can use the `precision_score` and `recall_score` functions from 
 [scikit learn](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics) to compute this. 
-* Return the values as a JSON dictionary with the keys `precision` and `recall`
 
-Use your client to report the results of `/metrics/1000` after streaming in at least 10K samples.
+Use your client to report the quality after streaming in at least 10K samples.
  
+## Part 3 - Going to production
+
+_This part is purely a design question - you should not write any code for this part._
+
+Good news! Your manager saw your proof of concept API and wants to launch it with customers. 
+
+Provide a brief sketch of a 'production ready' version of the online learning API
+
+* List out some of the problems you see with the Proof Of Concept demo.
+    * To provide a starting point, maybe you want to think about controlling access to the API, maybe you want to think about accepting multiple users or handling very large datasets. 
+    * It's up to you to come up with a list of design points - the more the better.
+* Sketch out what functionality you would add to the POC to handle the design goals you have identified
+* Provide a simple system diagram of what components would this system have and how are they linked up?
+
+
 ## Guidelines
 
 ## Got stuck?
