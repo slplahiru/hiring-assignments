@@ -40,10 +40,12 @@ Develop a microservice that:
 
 Overall the service must be considered production-ready.
 
-Bonus points if the service: 
+Bonus points if  
 
-* Provide Prometheus metrics from the service.
-* Has CI/CD (GitLab, GitHub Actions or similar) to build, test and deploy
+* Prometheus metrics are provided from the service.
+* Resources are provisioned via IaC
+* There is CI/CD (GitLab, GitHub Actions or similar) to build, test and deploy
+* There is a good developer experience
 
 ## Delivery
 
