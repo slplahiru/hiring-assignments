@@ -1,0 +1,5 @@
+replicas: 1
+dummy:
+  image:
+    repository: "slplahiru/dummy-test"
+    tag: "1.1"

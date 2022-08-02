@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: "dummy"
+    project: "hiring-assignments"
+  name: "dummy"
+spec:
+  replicas: {{ .Values.replicas }}
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      run: "dummy"
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: "dummy"
+        project: "hiring-assignments"
+    spec:
+      containers:
+      - name: dummy
+        image: "{{ .Values.dummy.image.repository }}:{{ .Values.dummy.image.tag }}"
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: default
+          containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: default
+          initialDelaySeconds: 120
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: default
+          initialDelaySeconds: 20
+          timeoutSeconds: 45
+
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
