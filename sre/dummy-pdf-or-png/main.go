@@ -10,6 +10,12 @@ import (
 	"time"
 )
 
+func healthCheck(w http.ResponseWriter, r *http.Request) {
+	s := fmt.Sprintf("Health OK!")
+	io.WriteString(w, s)
+	log.Println("OK")
+}
+
 func serveRandomFile(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "GET" {
 		log.Println("ERROR: Expected a GET request")
@@ -40,6 +46,7 @@ func serveRandomFile(w http.ResponseWriter, r *http.Request) {
 func main() {
 	rand.Seed(time.Now().UnixNano())
 	http.HandleFunc("/", serveRandomFile)
+	http.HandleFunc("/health", healthCheck)
 	err := http.ListenAndServe(":3000", nil)
 	if err != nil {
 		log.Fatal(err)
