@@ -17,10 +17,10 @@ cd dummy-pdf-or-png
 docker build -t slplahiru/dummy-test:1.0 .
 docker push slplahiru/dummy-test:1.0
 ```
-![Cluster](sre/dummy/images/Kuber.jpg)
+![Cluster](sre/images/Kuber.jpg)
 
 ## Update helm chart values file
-Here, the replica set is defined and directs to the image tthat is in the repository and define a tag for it. 
+Here, the replica set is defined and directs to the image that is in the repository and define a tag for it. 
 
 
 ## Install helm chart
