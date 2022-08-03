@@ -1,6 +1,6 @@
 # Build and install dummy-pdf-or-png project in Kubernetes
 
-#TODO: intro 
+The Purpose of this assignment is to a develop a microservice that takes HTTP GET requests with a random ID and request a document from the microservice that's provided and return that document with the correct MIME type.
 
 ## Prerequisites
 * Linux VM
@@ -17,9 +17,11 @@ cd dummy-pdf-or-png
 docker build -t slplahiru/dummy-test:1.0 .
 docker push slplahiru/dummy-test:1.0
 ```
+![Cluster](Kuber.jpg)
 
 ## Update helm chart values file
-#TODO: write
+Here, the replica set is defined and directs to the image tthat is in the repository and define a tag for it. 
+
 
 ## Install helm chart
 
